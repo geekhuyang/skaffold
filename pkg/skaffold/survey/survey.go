@@ -60,7 +60,7 @@ func (s *Runner) DisplaySurveyPrompt(out io.Writer) error {
 	if isStdOut(out) {
 		output.Green.Fprintf(out, hats.prompt())
 	}
-	return updateConfig(s.configFile, hats.id)
+	return updateConfig(s.configFile)
 }
 
 func (s *Runner) OpenSurveyForm(_ context.Context, out io.Writer, id string) error {
@@ -78,5 +78,5 @@ func (s *Runner) OpenSurveyForm(_ context.Context, out io.Writer, id string) err
 	}
 	// Currently we will only update the global survey taken
 	// When prompting for the survey, we need to use the same field.
-	return sConfig.UpdateGlobalSurveyTaken(s.configFile, id)
+	return sConfig.UpdateGlobalSurveyTaken(s.configFile)
 }
